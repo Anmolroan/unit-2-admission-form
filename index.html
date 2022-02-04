@@ -79,7 +79,14 @@
         color:rgb(119, 10, 10);
         font-size: 40px;
         }
-
+        #submit{
+            margin-left: 500px;
+            margin-top:20px;
+            font-size: 20px;
+            padding:5px;
+            color:rgb(119, 10, 10);
+            background:#ffdffd
+        }
     </style>
 </head>
 <body>
@@ -92,26 +99,48 @@
     <div>Rejected</div>
 </div>
 <details></details>
-    <form>
+    <form id="form">
         <label>Name</label>
-        <input label="Name" type="text">
+        <input id="name" type="text" placeholder="Name" >
         <label>Image</label>
-        <input>
+        <input  id="image" type="url" placeholder="IMAGE URL">
         <label>Age</label>
-        <input>
+        <input id="age" type="number" placeholder="AGE">
         <label>Gender</label>
-        <select>
+        <select id="gender" name="gender">
             <option value="Male">Male</option>
             <option value="Female">Female</option>
         </select>
         <label>Email</label>
-        <input>
+        <input id="email" type="email" placeholder="EMAIL">
         <label>Mobile Number</label>
-        <input>
-
+        <input id="mobile_number" type="number" placeholder="Mobile Number">
+<button id="submit" onclick="putinlocal()">Submit</button>
     </form>
 
     </div>
 </body>
 </html>
-<script>Email</script>
+<script>
+    function putinlocal(){
+        var form = document.getElementById("form");
+       
+       var obj={};
+    obj.name=form.name.value;
+    obj.image=form.image.value;
+    obj.age=form.age.value;
+    obj.gender=form.gender.value;
+    obj.gender=form.gender.value;
+    obj.email=form.email.value;
+    obj.mobile_number=form.mobile_number.value;
+console.log(obj);
+if(localStorage.getItem("masaiStudents")===null){
+    localStorage.setItem("masaiStudents", JSON.stringify([]))
+}
+var masaiStudents= JSON.parse(localStorage.getItem("masaiStudents")); 
+masaiStudents.push(obj);
+localStorage.setItem("masaiStudents", JSON.stringify(masaiStudents))
+
+    }
+    
+</script>
